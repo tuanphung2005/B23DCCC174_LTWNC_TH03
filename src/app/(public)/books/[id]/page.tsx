@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import ButtonLink from '@/components/ButtonLink';
 import { db } from '@/lib/db';
 import { loadBookById } from '@/lib/books';
 
@@ -47,9 +48,7 @@ export default async function BookDetailPage({ params }: BookPageProps) {
       <p>Số bản: {book.copies}</p>
       <p>Cập nhật lúc: {updatedAt}</p>
       <p>
-        <Link className="button" href={`/loans?book=${book.id}`}>
-          Mượn sách này
-        </Link>
+        <ButtonLink href={`/loans?book=${book.id}`}>Mượn sách này</ButtonLink>
       </p>
       <p>
         <Link href="/books">← Về danh mục sách</Link>

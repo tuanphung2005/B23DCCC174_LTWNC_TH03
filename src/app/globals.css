@@ -47,7 +47,6 @@ p {
   margin: 0 0 12px;
 }
 
-/* Header */
 .site-header {
   border-bottom: 1px solid var(--border);
 }
@@ -85,7 +84,6 @@ p {
   text-decoration: underline;
 }
 
-/* Page shell */
 .page {
   max-width: 880px;
   margin: 0 auto;
@@ -96,7 +94,6 @@ p {
   margin-top: 18px;
 }
 
-/* Form */
 .form-row {
   display: flex;
   flex-wrap: wrap;
@@ -115,6 +112,12 @@ p {
 .field label {
   font-size: 14px;
   font-weight: 600;
+}
+
+.login-form {
+  display: grid;
+  gap: 14px;
+  max-width: 380px;
 }
 
 input,
@@ -195,7 +198,37 @@ button.secondary:hover:not(:disabled) {
   font-weight: 500;
 }
 
-/* Table */
+.link-button {
+  font: inherit;
+  font-size: 15px;
+  color: var(--text);
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-color: #bbbbbb;
+  cursor: pointer;
+}
+
+.link-button:hover {
+  text-decoration-color: var(--text);
+}
+
+button.link-button:hover {
+  background: none;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.actions button {
+  font-size: 14px;
+  padding: 6px 12px;
+}
+
 .table-wrap {
   overflow-x: auto;
 }
@@ -227,7 +260,6 @@ tbody tr:hover {
   background: #fafafa;
 }
 
-/* Pager */
 .pager {
   display: flex;
   gap: 18px;

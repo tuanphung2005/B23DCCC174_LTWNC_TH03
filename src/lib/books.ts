@@ -8,10 +8,6 @@ export interface BooksFilter {
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-/**
- * Lấy danh sách sách, có thể lọc theo chuyên mục và tên sách.
- * Chờ 800ms để giả lập truy vấn chậm của cơ sở dữ liệu.
- */
 export const loadBooksShift = async (filter: BooksFilter = {}): Promise<Book[]> => {
   await wait(800);
   const category = filter.category?.trim() ?? '';
@@ -24,7 +20,6 @@ export const loadBooksShift = async (filter: BooksFilter = {}): Promise<Book[]> 
   });
 };
 
-/** Lấy một sách theo id, không có thì trả undefined. */
 export const loadBookById = async (id: number): Promise<Book | undefined> => {
   return db.books.find((book) => book.id === id);
 };
