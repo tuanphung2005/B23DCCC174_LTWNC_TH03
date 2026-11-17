@@ -10,9 +10,14 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/setupTests.ts',
     coverage: {
+      reporter: [
+        ['text', { skipFull: false }],
+        ['html', { skipFull: false }],
+        'json-summary',
+      ],
       include: [
         'src/lib/permissions.ts',
-        'src/lib/loan-schema.ts',
+        'src/lib/loan-validate.ts',
         'src/lib/format.ts',
         'src/components/LoanForm.tsx',
       ],

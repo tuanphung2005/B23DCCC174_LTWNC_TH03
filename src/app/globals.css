@@ -154,6 +154,10 @@ p {
   max-width: 460px;
 }
 
+#loan-form {
+  scroll-margin-top: 24px;
+}
+
 input,
 select,
 textarea {

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { auth } from '@/auth';
 import LoanForm from '@/components/LoanForm';
+import ScrollIntoView from '@/components/ScrollIntoView';
 import { loadBooksShift } from '@/lib/books';
 import { formatDate, STATUS_LABEL, TERM_LABEL } from '@/lib/format';
 import { listLoans, parseStatus } from '@/lib/loans';
@@ -124,7 +125,8 @@ export default async function LoansPage({ searchParams }: LoansPageProps) {
 
       {isStudent ? (
         <>
-          <h2>Gửi yêu cầu mượn</h2>
+          <h2 id="loan-form">Gửi yêu cầu mượn</h2>
+          {defaultBookId ? <ScrollIntoView targetId="loan-form" /> : null}
           <LoanForm
             books={books}
             defaultBookId={defaultBookId}
