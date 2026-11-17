@@ -6,6 +6,7 @@ import TextButton from '@/components/TextButton';
 
 export default function Header() {
   const { data: session, status } = useSession();
+  const isLoggedIn = status === 'authenticated' && Boolean(session?.user);
 
   return (
     <header className="site-header">
@@ -13,16 +14,22 @@ export default function Header() {
         <Link href="/" className="brand">
           Thư viện khoa CNTT
         </Link>
+
         <nav className="site-nav" aria-label="Menu chính">
           <Link href="/">Trang chủ</Link>
           <Link href="/books">Sách</Link>
+          {isLoggedIn ? <Link href="/loans">Sách đã mượn</Link> : null}
+          {isLoggedIn && session?.user.role === 'admin' ? (
+            <Link href="/admin">Quản trị</Link>
+          ) : null}
+        </nav>
 
-          {status === 'authenticated' && session?.user ? (
+        <div className="header-session">
+          {isLoggedIn && session?.user ? (
             <>
-              <Link href="/loans">Sách đã mượn</Link>
-              {session.user.role === 'admin' ? (
-                <Link href="/admin">Quản trị</Link>
-              ) : null}
+              <span>
+                Xin chào, {session.user.name} ({session.user.role})
+              </span>
               <TextButton onClick={() => signOut({ callbackUrl: '/' })}>
                 Đăng xuất
               </TextButton>
@@ -30,7 +37,7 @@ export default function Header() {
           ) : status === 'unauthenticated' ? (
             <Link href="/login">Đăng nhập</Link>
           ) : null}
-        </nav>
+        </div>
       </div>
     </header>
   );
